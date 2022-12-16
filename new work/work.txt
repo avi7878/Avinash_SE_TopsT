@@ -1,0 +1,20 @@
+Algorithm : It is a process which is followed step by step. 
+
+step 1 : start the gas 
+Step 2 : Take an input (bowl,milk,water,tea,etc..)
+Step 3 : Boiling.
+Step 4 : If tea is good, then goto next step, but if it is bad then goto step1.
+step 5 : Output (Serve)
+Step 6 : Stop.
+
+
+
+
+
+Create an algorithm to take a cake.
+Step 1 : Start..
+Step 2 : Input (milk,water,soda,flour,creem,etc...)
+Step 3 : baking.
+Step 4 : If cake is good, then goto next step, but it is bad then goto step 1.
+Step 5 : Output 
+Step 6 : Stop.
