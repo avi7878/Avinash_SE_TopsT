@@ -1,0 +1,9 @@
+     Algorithm to start a car. 
+
+
+Step 1 : Start
+Step 2 : Open the car door  
+Step 3 : Enter the key in the car 
+Step 4 : Push power bottum and start a car 
+Step 5 : drive a car and goto work 
+Step 6 : stop
