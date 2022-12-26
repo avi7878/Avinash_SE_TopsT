@@ -1,18 +1,16 @@
 #include<stdio.h>
 
-void main()
+int main()
 {
-
-    printf("FName Avinash");
-    printf("\nLName Chauhan");
-    printf("\nAddress Gir somnath");
-    printf("\nD.O.B 25-12-2001");
-    
-
- 
-   printf("c langunge");
-   printf("\nHello word");
-   printf("\nProgram run");
-   printf("\npython py");   
+     int a, b;
+     printf("enter a");
+     scanf("%d", &a);
+     
+     printf("enter b");
+     scanf("%d", &b);
+	 
+	 int sum = a + b;
+	 printf("sum is : %d", sum);
+	 return 0;   
 
 }
