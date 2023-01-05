@@ -2,7 +2,7 @@
    
 #include<stdio.h>
 
-int main()
+void main()
 {
 	int y;
 	printf("Enter any year : ");

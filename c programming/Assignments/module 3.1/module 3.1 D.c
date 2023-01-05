@@ -2,7 +2,7 @@
 
 #include<stdio.h>
 
-int main()
+void main()
 {
 	int principal,rate,time,interest;
 	
