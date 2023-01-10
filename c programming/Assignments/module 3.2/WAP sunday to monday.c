@@ -32,7 +32,7 @@ void main()
 	    printf("Sunday");
 	    break;
 	    default:
-	    printf("Invalid choice");
+	    printf("Invalid Number");
 	    break;
 				
 	}
