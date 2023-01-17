@@ -30,10 +30,10 @@ void main()
 	    printf("Your value is [%d] : %d\n",i,arr2[i]);	
 	}
 	
-	printf("\nSubtrection of Array1 and Array2.---->\n\n");
+	printf("\nSubtraction of Array1 and Array2.---->\n\n");
 	for(i=0;i<2;i++)
 	{
-	    printf("Subtrection [%d] : %d\n",i,(arr1[i]*arr2[i]));	
+	    printf("Subtraction [%d] : %d\n",i,(arr1[i]-arr2[i]));	
 	}	
 	
 	
