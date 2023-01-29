@@ -38,7 +38,7 @@ void main()
 	printf("\nPress 2. to Subtrect.\n");
 //	
 	printf("\nPress 3. to Multiplication.\n");
-//	
+	
 	printf("\nPress 4. to Division.\n");
 	
 	printf("\nEnter your choice? : ");

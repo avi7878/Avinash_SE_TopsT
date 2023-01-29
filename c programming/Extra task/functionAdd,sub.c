@@ -2,8 +2,9 @@
 
 void add()
 {
-	int a,b;
-	printf("\nAddition is : %d",(a+b));
+	int d,f;
+	printf("a = %d b = %d",d,f);
+	printf("\nAddition is : %d",(d+f));
 }
 
 void main()
