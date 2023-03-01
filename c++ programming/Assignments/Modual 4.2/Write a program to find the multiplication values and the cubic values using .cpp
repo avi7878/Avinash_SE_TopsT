@@ -24,6 +24,6 @@ int main()
 	cout<<"Enter the two Values : ";
 	cin>>val1>>val2;
 	cout<<"\nMultipliction Values is : "<<obj.mul(val1,val2);
-	cout<<"\nCubic Values is : "<<obj.cub(val1)<<"\t"<<obj.cub(val2);
+	cout<<"\nCubic Values is : "<<obj.cub(val1)<<" "<<obj.cub(val2);
 	return 0;
 }
