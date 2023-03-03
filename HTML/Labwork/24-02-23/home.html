@@ -4,35 +4,56 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Ecommerce Web side</title>
+
+     <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+
 </head>
 <body bgcolor="#F5B7B1 ">
-	<div style="border: 2px solid black;width: 1515px;height: 100px;background-image: url(shoping1.jpg);">
+
+	<div class="container"; style="border: 2px solid black;width: 1515px;height: 100px; background-image: url(shoping1.jpg);">
+
+		<form>
+			<input type="text" placeholder="Search">
+			<button type="submit">Search</button>
+		</form>
 		<h1 align="center" style="color: black; font-family: Adobe Garamond Pro Bold;">Shoping House</h1>
 
 	</div>
 
 <br>
 <!-- Menu Bar -->
-<div style="border: 2px solid black;width: 1515px;height: 100px;">
-	<h1 align="center">
-		<p>
-			<a href="home.html" style="color: black;">Home |</a>
-			<a href="products.html" style="color: black; ">Products |</a>
-			<a href="register.html" style="color: black;">Register |</a>
-			<a href="contact.html" style="color: black;">Contact Us |</a>
-			<a href="about.html" style="color: black;">About Us |</a>
-		</p>
-	</h1>
+<div style="border: 2px solid black;width: 1515px;height: 100px; z-index: 1;">
+
+	<ul>
+		    <li><a href="home.html" >Home</a></li>
+			<li><a href="products.html">Products</a></li>
+			<li><a href="register.html">Register</a></li> 
+			<li><a href="electronic.html">Electronic</a>
+				<ul>
+					<li><a href="electronic.html">Tv</a></li>
+					<li><a href="electronic.html">Mobile</a></li>
+					<li><a href="electronic.html">Ac</a></li>
+					<li><a href="electronic.html">Smart Watches</a></li>
+					<li><a href="electronic.html">Computer</a></li>
+					<li><a href="electronic.html">Pen Drives</a></li>
+					<li><a href="electronic.html">Headphones</a></li>
+				</ul>
+			</li>
+			<li><a href="contact.html">Contact Us</a></li>
+			<li><a href="about.html">About Us</a></li>
+    </ul>
+
 </div>
 <!-- Side Bar -->
-<div style="border: 1px solid grey; height: 350px; width: 200px;">
+<div>
+<div style="border: 1px solid grey; height: 0px; width: 200px;">
 	<h3 align="center">Categories</h3>
     <hr>
-    <ul>
+    <p>
     	<a href="electronic.html" style="color: black;"><li>Electronic</li></a>
     	<a href="clothing.html" style="color: black;"><li>Clothing</li></a>
     	<a href="accessories.html" style="color: black;"><li>Accessories</li></a>
-    </ul>
+    </p>
     <br>
     <h3 align="center">Accessories</h3>
     <hr>
@@ -43,12 +64,12 @@
     </ol>
 </div>
 <!-- Main Content -->
-<div style="border: 2px solid grey;height: 350px; width: 1315px; margin-top: -23.2%;margin-left: 13.2%;">
-	<a href="footwear.html"><img src="footwear1.jpg" height="350px"; width="454px" alt="img not exits" title="Footwear"></a>
+<div id="ac" style="margin: right;" >
+	<a href="footwear.html"><img src="footwear1.jpg" height="350px"; width="454px" alt="img not exits" title="Footwear" style="z-index: -10;"></a>
 	<a href="clothing.html"><img src="clothing2.jpg" height="350px"; width="380px" alt="img not exits" title="Clothing"></a>
 	<a href="electronic.html"><img src="electronic1.jpg" height="350px"; width="470px" alt="img not exits" title="Electronic"></a>
 </div>
-
+</div>
 </h1>
 </body>
 </html>
