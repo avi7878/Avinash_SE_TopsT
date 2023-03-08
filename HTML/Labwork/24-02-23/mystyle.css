@@ -6,14 +6,29 @@
 	align-items: center;
 	justify-content: center;
 }
-from
+.Search
 {
 	background: #fff;
 	width: 600px;
 	height: 55px;
 	display: flex;
 }
-
+.Search input
+{
+	flex: 1;
+	border: none;
+	outline: none;
+}
+.Search button
+{
+	background: tomato;
+	padding: 10px 50px;
+	border: none;
+	outline: none;
+	color: #fff;
+	letter-spacing: 1px;
+	cursor: pointer;
+}
 ul
 {
 	margin: 0px;
@@ -46,10 +61,11 @@ ul li:hover ul li
 {
 	display: block;
 }
-#ac
+
+
+div ul li ul
 {
 	height: 100px;
-	width: 1500px;
-	margin: right;
-
+	width: 100px;
+	z-index: 0;
 }
