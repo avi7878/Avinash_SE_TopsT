@@ -1,0 +1,43 @@
+Task
+
+1. Create table Name: Student and Exam
+
+
+CREATE DATABASE Assignment
+
+CREATE TABLE Student
+(
+    Rollno int PRIMARY KEY AUTO_INCREMENT,
+    Name varchar(200),
+    Branch(200)
+)
+
+CREATE TABLE Exam
+(
+    Rollno_fk int,
+    FOREIGN KEY (Rollno_fk) REFERENCES stdudent (Rollno),
+    S_code varchar(200),
+    Marks int,
+    P_code varchar(200),
+)
+  
+INSERT INTO TABLE Student(Rollno,Name,Branch) VALUES(1,"Jay","Computer Science"),
+(2,"Suhani","Electronic and com"),
+(3,"Kriti","Electronic and com")
+
+
+INSERT INTO TABLE Exam(Rollno,S_code,Marks,P_code) VALUES(1,"CS11",50,"CS"),
+(1,"CS12",60,"CS"),
+(2,"ES101",66,"EC"),
+(2,"EC102",70,"ES"),
+(3,"EC101,45,"EC"),
+(3,"EC102",50,"EC"),
+ 
+
+
+
+
+
+
+
+

@@ -1,0 +1,63 @@
+Select -- Like,SUM,AVG,COUNT,MIN,MAX,
+JOINS
+
+Stored Procedures in sql:-
+
+Function-- To perform a task again again
+
+Procedures:-
+
+create procedure procedurename
+
+CREATE TABLE candidates
+(
+    
+    c_id int(20),
+    c_name varchar(200),
+    c_address varchar(200)
+    
+    
+    
+)
+
+DELIMITER $$
+
+CREATE PROCEDURE insertData()
+BEGIN
+	
+	INSERT INTO candidates(c_id,c_name,c_address) VALUES(1,"Manav","Rajkot");
+
+
+
+END
+
+call Procedurename
+
+call insertData();
+call insertData();
+call insertData();
+call insertData();
+
+
+DELIMITER $$
+
+CREATE PROCEDURE insertDiffData(i int(20), j varchar(200))
+BEGIN
+	INSERT INTO candidates(c_id,c_name) VALUES(i,j);
+
+
+END
+
+CALL insertDiffData(2,"Jayesh");
+CALL insertDiffData(3,"Suresh");
+CALL insertDiffData(4,"Ramesh");
+CALL insertDiffData(5,"Brijesh");
+
+
+
+Task:- Create table student and enter the values of id,name,subject and marks using procedures.Add
+Different Values
+
+
+Task:- Create table student and add the values id,name,subject and marks and calculate the total marks,
+and average.

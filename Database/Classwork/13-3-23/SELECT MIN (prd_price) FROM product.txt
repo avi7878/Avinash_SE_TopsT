@@ -1,0 +1,73 @@
+SELECT MIN (prd_price) FROM product
+
+SELECT MAX (prd_price) FROM product
+
+SELECT COUNT(prd_id) FROM product
+
+SELECT SUM(prd_price) FROM product
+
+SELECT AVG(prd_price) FROM product
+
+SELECT * FROM product WHERE prd_name LIKE 'D%'
+
+SELECT * FROM product WHERE prd_name LIKE '%s'
+
+SELECT * FROM product WHERE prd_name LIKE '%e%'
+
+SELECT * FROM product WHERE prd_name LIKE '_r%'
+
+SELECT * FROM product WHERE prd_name LIKE 'D%s'
+
+
+
+Joins :-
+
+
+---->  To joins twonor more table which are related to each other
+
+
+Types of joins:-
+
+1) Inner Join
+
+
+2) Outer Join
+
+3) Left Join
+
+4) Right Join
+
+5) Full Join
+
+
+SELECT category.cate_name,subcategory.subcate_name FROM category
+JOIN subcategory on category.cate_id=subcategory.cate_id_fk
+
+SELECT category.cate_name,subcategory.subcate_name,product.prd_name,product.prdprice<product.prd_desc_
+
+JOIN subcategory ON category.cate_id=subcategory.cate_id_fk
+
+JOIN product ON category.cate_id=product.cate_id_fk
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

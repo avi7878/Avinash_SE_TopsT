@@ -1,0 +1,49 @@
+CREATE DATABASE a_c
+
+CREATE TABLE student
+( 
+    id int,
+    name varchar(50)
+    
+)
+
+
+CREATE TABLE school
+( 
+    s_id int,
+    s_name varchar(200),
+    date_time timestamp,
+    action_perfomed varchar(50)
+    
+)
+
+
+DELIMITER $$
+
+CREATE TRIGGER insert_trigger AFTER INSERT ON student FOR EACH ROW
+
+BEGIN
+      
+      INSERT INTO school(s_id,s_name,action_perfomed) VALUES(new.id,new.name,"Recored inserted");
+      
+END
+
+
+
+
+DELIMITER $$
+
+CREATE TRIGGER delete_trigger AFTER DELETE ON student FOR EACH ROW
+
+BEGIN  
+  
+       insert into school(s_id,s_name,action_perfomed) VALUES(old.id,old.name,"Record deleted");
+       
+END
+
+Quarey --> DELETE FROM student WHERE id=1;
+
+
+
+
+

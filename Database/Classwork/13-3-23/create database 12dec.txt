@@ -1,0 +1,55 @@
+create database 12dec
+
+create tabale Employee
+(
+   Employee_id int(50) PRIMARY KEY AUTO_INCREMENT
+   First_name varchar(200),
+   Last_name varchar(200),
+   Salary int(50),
+   joining_date varchar(200),
+   Department varchar(200)
+)
+
+
+INSERT INTO Employee(Employee_id,First_name,Last_name,Salary,joining_date,Department) VALUES
+(1,"john","abraham",1000000,"01-JAN-13 12.00.00 AM","Banking"),
+(2,"Michael","Clarke",800000,"01-JAN-13 12.00.00 AM","Insurance"),
+(3,"Roy","Thomas",700000,"01-JAN-13 12.00.00 AM","Banking"),
+(4,"Tom","Jose",6000000,"01-JAN-13 12.00.00 AM","Insurance"),
+(5,"Jerry","Pinto",650000,"01-FEB-13 12.00.00 AM","Insurance"),
+(6,"Philip","Mathew",750000,"01-JAN-13 12.00.00 AM","Services"),
+(7,"Avinash","Chauhan",650000,"01-Jan-13 12.00.00 AM","Services"),
+(8,"Kelvin","Chauhan",600000,"01-FEB-13 12.00.00AM","Insurance");
+
+
+CREATE TABLE Incentive
+(
+   Employee_ref_id int(50),
+   Incentive_date varchar(200),
+   Incentive_amount(200),
+   FOREIGN KEY(Employee_ref_id) REFERENCES employee(Employee_id)
+)
+
+INSERT INTO Incentive(Employee_ref_id,Incentive_date,Incentive_amount) VALUES
+(1,"01-FEB-13",5000)
+(2,"01-FEB-13",3000)
+(3,"01-FEB-13",4000)
+(4,"01-FEB-13",4500)
+
+SELECT * FROM `employee` WHERE First_name = 'Tom' 
+
+SELECT employee.employee_id,incentive.employee_ref_id FROM employee JOIN incentive on employee.employee_id = incentive.employee_ref_id 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

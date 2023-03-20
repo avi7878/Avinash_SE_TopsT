@@ -1,0 +1,25 @@
+1.What do you understand By Database
+
+--> A database is an organized collection of structured information, or data, typically stored electronically in a computer system. A database is usually controlled by a database management system (DBMS).
+
+
+2.What is Normalization?
+
+--> Normalization is a database design technique that reduces data redundancy and eliminates undesirable characteristics like Insertion.
+
+3.What is Difference between DBMS and RDBMS?
+
+--> DBMS stands for Database Management System. 
+--> RDBMS is the acronym for the Relational Database Management system.
+--> In DBMS, Data stored is in file formant.
+--> In RDBMS, Data stored is in table format.
+--> In DBMS, Data is stored in a small quantity.
+--> In RDBMS, Data is stored in a large amount.
+--> In DBMS, There is normalisation.
+--> In RDBMS, Normalisation is not achievable.
+--> In DBMS, No Support for distributed database.
+--> In RDBMS, Support distributed database.
+
+4.What is MF Cod Rule of RDBMS Systems?
+
+--> 

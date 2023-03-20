@@ -1,0 +1,53 @@
+CREATE DATABASE a_c
+
+CREATE TABLE school
+(
+   s_id int,
+   s_name varchar(200),
+   date_time timestamp,
+   action_perfomed varcha(200)
+)
+
+
+CRETARE TABLE student 
+
+(
+    id int,
+    name varchar(200)
+)
+
+
+DELIMITER $$
+
+CREATE TRIGGER insert_trigger AFTER INSERT ON student FOR EACH ROW
+
+BEGIN  
+     
+     INSERT INTO school(s_id,s_name,"action_perfomed") VALUES(new.id,new.name,"Record insereted");
+     
+END
+
+
+
+DELIMITER $$
+
+CREATE TRIGGER delete_trigger AFTER DELETE ON student FOR EACH ROW
+
+BEGIN  
+     
+     INSERT INTO school(s_id,s_name,"action_perfomed") VALUES(old.id,old.name,"Record deleted");
+     
+END
+
+
+
+DELIMITER $$
+
+CREATE TRIGGER update_trigger AFTER INSERT ON student FOR EACH ROW
+
+BEGIN 
+
+     INSERT INTO school(s_id,s_name,action_perfomed) VALUES(new.id,new.name,"Record update"); 
+
+END
+

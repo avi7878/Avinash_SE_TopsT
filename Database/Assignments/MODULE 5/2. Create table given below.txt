@@ -1,0 +1,22 @@
+2. Create table given below 
+
+
+
+CREATE TABLE client 
+(
+   FirstName varchar(200),
+   LastNamre varchar(200),
+   Address varchar(200),
+   City varchar(200)
+   Age int,
+
+) 
+
+INSERT INTO client(Firstname,Lastname,Address,City,Age) VALUES("Mickey","Mouse","123 Fantasy Way","Anaheim",73),
+("Bat","Man","321 Cavem Ave","Gotham",54),
+("Wonder","Woman","987 Truth Way","Paradise",39),
+("Donald","Duck","555 Quack Street","Mallard",65),
+("Bugs","Bunny","567 Carrot Steert","Rascal",58),
+("Wiley","Coyote","999 Acme Way","Canyon"61),
+("Cat","Woman","234 Purrfect Street","Hairball",32),
+("Tweety","Bird",543,"Itotltaw",28),
