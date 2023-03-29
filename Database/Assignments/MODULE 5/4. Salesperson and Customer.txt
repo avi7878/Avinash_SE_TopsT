@@ -1,0 +1,46 @@
+CREATE DATABASES assignment 
+
+CREATE TABLE SALSEPERSON
+(  
+    SNO INT PRIMARY KEY AUTO_INCREMENT,
+    SNAME VARCHAR(50),
+    CITY VARCHAR(50),
+    COMM VARCHAR(50)
+);
+
+INSERT INTO salseperson(SNO,SNAME,CITY,COMM) VALUES(1001,"peel","london",".12"),
+(1002,"serres","san jose",".13"),
+(1004,"motika","london",".11"),
+(1007,"rafkin","barcelona",".15"),
+(1003,"axelord","new york",".1")
+
+CREATE TABLE CUSTOMER
+(  
+    CNM INT PRIMARY KEY AUTO_INCREMENT,
+    CNAME VARCHAR(50),
+    CITY VARCHAR(50),
+    RATING INT,
+    SNO_REF INT,
+    FOREIGN KEY (SNO_REF) REFERENCES salseperson(SNO)
+);
+
+INSERT INTO customer(CNM,CNAME,CITY,RATING,SNO_REF)VALUES
+(201,"hoffman","london",100,1001),
+(202,"giovanne","roe",200,1003),
+(203,"liu","san jose",300,1002),
+(204,"grass","barcelona",100,1002),
+(206,"clemens","london",300,1007),
+(207,"pereira","roe",100,1004)
+
+
+A) SELECT * FROM customer WHERE SNO_REF >= '1000';
+
+B) 
+
+
+
+
+
+
+
+
