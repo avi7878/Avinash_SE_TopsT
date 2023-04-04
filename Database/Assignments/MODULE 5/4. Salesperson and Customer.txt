@@ -20,11 +20,11 @@ CREATE TABLE CUSTOMER
     CNAME VARCHAR(50),
     CITY VARCHAR(50),
     RATING INT,
-    SNO_REF INT,
-    FOREIGN KEY (SNO_REF) REFERENCES salseperson(SNO)
+    SNO_FK INT,
+    FOREIGN KEY (SNO_FK) REFERENCES salseperson(SNO)
 );
 
-INSERT INTO customer(CNM,CNAME,CITY,RATING,SNO_REF)VALUES
+INSERT INTO customer(CNM,CNAME,CITY,RATING,SNO_FK)VALUES
 (201,"hoffman","london",100,1001),
 (202,"giovanne","roe",200,1003),
 (203,"liu","san jose",300,1002),
@@ -33,12 +33,20 @@ INSERT INTO customer(CNM,CNAME,CITY,RATING,SNO_REF)VALUES
 (207,"pereira","roe",100,1004)
 
 
-A) SELECT * FROM customer WHERE SNO_REF >= '1000';
+A) SELECT * FROM customer WHERE SNO_FK > '1000';
 
-B) 
+  select * from salseperson join customer on salseperson.sno = customer.sno_fk where sno_fk > 1000
 
+B)  Names and cities of all salespeople in London with commission above 0.12 ?
+==> SELECT sname,city,comm FROM salseperson WHERE city = 'london' HAVING comm > .12;
 
+C) All salespeople either in Barcelona or in London ?
+==> SELECT * FROM `salseperson` WHERE city = "barrcelon" OR city = "london";
 
+D) All salespeople with commission between 0.10 and 0.12. (Boundary values should be excluded). 
+==> SELECT * FROM `salseperson` WHERE comm BETWEEN .10 AND .12;
+
+E)  All customers excluding those with rating <= 100 unless they are located in Rome ? 
 
 
 
