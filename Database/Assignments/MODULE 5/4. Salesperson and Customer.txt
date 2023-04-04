@@ -47,7 +47,7 @@ D) All salespeople with commission between 0.10 and 0.12. (Boundary values shoul
 ==> SELECT * FROM `salseperson` WHERE comm BETWEEN .10 AND .12;
 
 E)  All customers excluding those with rating <= 100 unless they are located in Rome ? 
-
+==> SELECT * FROM customer WHERE rating > 100 OR city = 'Rome';
 
 
 

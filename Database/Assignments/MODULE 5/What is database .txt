@@ -1,2 +1,0 @@
-What is database ?
-==> It is use to store large amount of Data, and manage the data.

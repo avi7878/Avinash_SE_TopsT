@@ -73,3 +73,46 @@ The Data Manipulation Language of the relational system should not be concerned 
 Rule 12 − Rule of Non Subversion
 
 Any row should obey the security and integrity constraints imposed. No special privileges are applicable.
+
+
+
+5.What do you understand By Data Redundancy?
+==> Data redundancy refers to the duplication of data within a database or information system. It occurs when the same piece of data is stored in multiple places or when multiple copies of the same data are kept in the same location.
+
+
+
+6.What is DDL Interpreter? 
+==>  A DDL (Data Definition Language) interpreter is a component of a database management system that is responsible for executing commands that define the structure and organization of a database.
+       DDL statements are used to create, modify, and delete database objects such as tables, indexes, and views. The interpreter receives these statements from a user or application and translates them into     actions that create, modify, or delete the specified database objects.
+
+7.What is DML Compiler in SQL? 
+==>  DML stands for Data Manipulation Language, and it is a subset of SQL (Structured Query Language) used for manipulating and querying data stored in a database.
+      A DML compiler is a component of a database management system that processes and executes Data Manipulation Language (DML) statements such as SELECT, INSERT, UPDATE, DELETE, and other SQL statements that are used to manipulate data stored in the database.
+
+8.What is SQL Key Constraints writing an Example of SQL Key Constraints?
+==> SQL key constraints are rules applied to a database table to ensure the uniqueness and integrity of its data. There are different types of key constraints in SQL, including primary keys, foreign keys, unique keys, and check constraints.
+   1)  Primary Key Constraint: A primary key is a unique identifier for a row in a table. The primary key constraint ensures that the primary key column contains only unique values and cannot contain null values.
+   2)  Foreign Key Constraint: A foreign key is a column or a set of columns in a table that refers to the primary key of another table. The foreign key constraint ensures that the values in the foreign key column(s) exist in the referenced table's primary key column(s).    
+   3)  Unique Key Constraint: A unique key constraint ensures that a column or a set of columns in a table contain only unique values. Unlike the primary key constraint, a unique key constraint can allow null values.
+
+
+9.  What is save Point? How to create a save Point write a Query?
+==> A savepoint is a point within a transaction where you can roll back to a specific point without rolling back the entire transaction. Savepoints are useful when you want to group a series of related operations within a larger transaction and provide a way to undo only part of the transaction if needed.
+   
+   Query :-
+		SAVEPOINT my_savepoint;
+
+
+10. What is trigger and how to create a Trigger in SQL?
+==>  A trigger is a database object that automatically executes in response to specific events or changes that occur in the database. Triggers are often used to enforce business rules, perform auditing, or maintain referential integrity between tables.
+
+   Query :-
+		CREATE TABLE table_name AFTER INSERT ON table1 FOR EACH ROW
+		BEGIN
+			INSERT INTO TABLE2(COLUMNAME1,COLUMNAME2,......) VALUES(COLUMNAME OF TABLE2, ....);
+		END
+
+
+
+
+
