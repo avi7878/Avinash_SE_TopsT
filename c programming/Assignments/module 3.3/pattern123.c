@@ -11,7 +11,7 @@ void main()
 	{
 		for(j=0;j<i;j++)
 		{
-			printf("%d",count);
+			printf("%d\t",count);
 			++count;
 		}
 		printf("\n");
