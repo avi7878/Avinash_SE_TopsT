@@ -1,0 +1,4 @@
+ALTER IN SQL.
+
+
+ADD colum in table ==> ALTER TABLE table-name ADD colum-name type AFTER colum-name

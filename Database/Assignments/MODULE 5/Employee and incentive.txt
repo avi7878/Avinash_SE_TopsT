@@ -1,0 +1,71 @@
+CREATE TABLE Employee
+(  
+    Employee_id int PRIMARY KEY AUTO_INCREMENT,
+    First_name varchar(200),
+    Last_name varchar(200),
+    Salary int,
+    Joining_date varchar(200),
+    Department varchar(200)
+)
+
+INSERT INTO Employee(Employee_id,First_name,Last_name,Salary,joining_date,Department) VALUES
+(1,"john","abraham",1000000,"01-JAN-13 12.00.00 AM","Banking"),
+(2,"Michael","Clarke",800000,"01-JAN-13 12.00.00 AM","Insurance"),
+(3,"Roy","Thomas",700000,"01-JAN-13 12.00.00 AM","Banking"),
+(4,"Tom","Jose",6000000,"01-JAN-13 12.00.00 AM","Insurance"),
+(5,"Jerry","Pinto",650000,"01-FEB-13 12.00.00 AM","Insurance"),
+(6,"Philip","Mathew",750000,"01-JAN-13 12.00.00 AM","Services"),
+(7,"Avinash","Chauhan",650000,"01-Jan-13 12.00.00 AM","Services"),
+(8,"Kelvin","Chauhan",600000,"01-FEB-13 12.00.00AM","Insurance");
+
+
+CREATE TABLE Incentive
+(  
+    employee_ref_id int,
+    FOREIGN KEY(employee_ref_id) REFERENCES employee(employee_id),
+    incentive_date varchar(50),
+    incentive_amount varchar(50)
+)
+
+INSERT INTO incentive(employee_ref_id,incentive_date,incentive_amount) VALUES
+(1,"01-FEB-13",5000),
+(2,"01-FEB-13",3000),
+(3,"01-FEB-13",4000),
+(4,"01-FEB-13",4500);
+
+
+A) Get First_Name from employee table using Tom name “Employee Name”
+==> SELECT * FROM `employee` WHERE First_name = 'tom';
+
+B) Get FIRST_NAME, Joining Date, and Salary from employee table. 
+==> SELECT First_name,Joining_date,Salary FROM employee;
+
+C)  Get all employee details from the employee table order by First_Name Ascending and Salary descending?
+==> SELECT * FROM employee ORDER BY first_name ASC, salary DESC;
+
+D) Get employee details from employee table whose first name contains ‘J’.
+==> SELECT * FROM `employee` WHERE First_name like 'j%'
+
+E) Get department wise maximum salary from employee table order by salary ascending?
+==> SELECT department, MAX(salary) AS max_salary FROM employee GROUP BY department ORDER BY max_salary ASC
+
+F) Select first_name, incentive amount from employee and incentives table for 
+those employees who have incentives and incentive amount greater than 3000 ?  
+==> SELECT First_name,incentive_amount FROM employee INNER JOIN incentive ON           
+   employee.EMPLOYEE_ID=incentive.EMPLOYEE_REF_ID AND incentive_amount >3000;
+
+F)  Create After Insert trigger on Employee table which insert records in view 
+table?
+==> 
+
+
+
+
+
+
+
+
+
+
+
+

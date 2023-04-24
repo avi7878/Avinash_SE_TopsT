@@ -2,14 +2,14 @@
 
 void main()
 {
-	int days,years;years,days;
+	float days,years;
 	printf("Enter the number of days : ");
-	scanf("%d",&days);
+	scanf("%f",&days);
 	years=days/365;
-	printf("\nmumber of years is : %d",years);
+	printf("\nnumber of years is : %.2f",(float)years);
 	
 	printf("\n\nEnter the number of years : ");
-	scanf("%d",&years);
+	scanf("%f",&years);
 	days=years*365;
-	printf("\nnumber of days is : %d",days);
+	printf("\nnumber of days is : %.2f",(float)days);
 }
