@@ -44,10 +44,10 @@ C) Get all employee details from the employee table order by First_Name Ascendin
 ==> SELECT * FROM employee ORDER BY First_name asc, Salary DESC;
 
 D) Get employee details from employee table whose first name contains ‘J’?
-==> SELECT Salary FROM employee ORDER BY Salary ASC;
+==> SELECT Salary FROM employee WHERE First_name like "%j%"
 
 E) Get department wise maximum salary from employee table order by salary ascending?
-==> SELECT Department, MAX(Salary) FROM employee GROUP BY Department;
+==> SELECT Department, MAX(Salary) FROM employee GROUP BY Department ORDER BY salary asc;
 
 F) Select first_name, incentive amount from employee and incentives table for 
    those employees who have incentives and incentive amount greater than 3000 ?
