@@ -1,0 +1,2 @@
+ What is the purpose continue statement in python? 
+   The continue keyword used to end a current itretion in a loop and continue the next itretion.
