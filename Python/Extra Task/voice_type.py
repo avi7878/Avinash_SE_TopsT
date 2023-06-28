@@ -1,8 +1,9 @@
 import speech_recognition as s 
+
 ac = s.Recognizer()
+
 with s.Microphone() as m:
     audio = ac.listen(m)
-    
     query = ac.recognize_google(audio,language='eng-in')
     print(query)
 
