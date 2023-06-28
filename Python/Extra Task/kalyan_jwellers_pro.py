@@ -2,17 +2,34 @@ import pyttsx3
 engine = pyttsx3.init()
 engine.setProperty('rate', 130)  
 engine.setProperty('volume', 10) 
+
+
 status = True
 while status:
     print("\nWelcome to kalyan Jwellers")
-
+    engine.say("Welcome to kalyan Jwellers")
+    engine.runAndWait()
+    
+    engine.say("Enter your Name")
+    engine.runAndWait()
     name = input("Enter your Name : ")
+    
+    engine.say("Enter your Gender(male,female)")
+    engine.runAndWait()
     gender = input("Enter your Gender(male,female) : ")
+
+    engine.say("Enter your age")
+    engine.runAndWait()
     age = int(input("Enter your age : "))
 
     print("--------------------------------------------------\n")
 
+    engine.say("Enter product name")
+    engine.runAndWait()
     product = input("Enter product name : ")
+
+    engine.say("Enter product gram")
+    engine.runAndWait()
     gram = int(input("Enter product gram : "))
     print("Current gold price (1 gram) : 5752")
     total_gold_price = gram * 5752
