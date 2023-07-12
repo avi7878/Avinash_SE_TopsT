@@ -1,0 +1,12 @@
+ What is List? How will you reverse a list? 
+==> List is collaction data type.
+==> which is a store duplicat value also.
+==> we can change it value at runtime. we can perfomed append,insert and remove opretion.
+==> which is cotain similar and dis-similar data elements.
+==> In list index always start with 0.
+==> list is orderble,indexble and mutable.	
+==> in list we can use by []
+
+ Differentiate between append () and extend () methods?  
+==> append() is add one value in a exiting list.
+==> extend() is add more then one value in a list.
