@@ -1,0 +1,10 @@
+====================== TODAY SHOP RECEIPT ======================
+payment received from pizza : 254.89999999999998
+payment received from pasta : 47.5
+payment received today : 302.4
+Number of pizza and pasta sold in one shift :  15
+Number of 1.5lt soft drink bottles given : 2
+Number of bruschetta given to customer : 2
+Number of chocco brownies ice cream given to customer : 2
+*****************************************************************
+			Bye Bye !!!
