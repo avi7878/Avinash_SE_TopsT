@@ -1,0 +1,19 @@
+
+  /* .main-wrapper {
+    background-image: url('{% static "myapp/assets/img/img-02.jpg" %}');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  } */
+
+
+/* <body class="account-page"></body> */
+/* 
+body{
+    background: url('{% static "myapp/assets/img/img-02.jpg" %}') no-repeat center center/cover;;
+
+} */
+/* 
+.nitin{
+    background-color: red;
+} */

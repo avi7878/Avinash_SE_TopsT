@@ -1,0 +1,40 @@
+
+body{
+    background-color: rgb(228, 217, 219);
+/* background: url('{% static 'myapp/assets/images/login2.jpg' %}') no-repeat center center/cover; */
+    color: aliceblue;
+}
+.btn-hover:hover {
+    background-color: #c82e2e; /* Change this to the desired hover background color */
+    color: #972424; /* Change this to the desired hover text color */
+}
+.input-group:hover{
+    background-color: #972424;
+    border-radius: 50px;
+    /* transform: rotate(20deg); */
+    /* transform: scale(30deg); */
+}
+
+.hoverr {
+    color: #fff !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #2d9aab;
+    padding: 10px 70PX;
+    border-radius: 30px;
+    display: inline-block;
+    border: none;
+    transition: all 0.4s ease 0s;
+    width: 200px;
+    height: 50px;
+    }
+    
+.hoverr:hover {
+background: #036262;
+letter-spacing: 3px;
+transition: all 0.4s ease 0s;
+color: #3b3f41;
+box-shadow: 0 0 20px #f7f706;
+text-shadow: 0 0 20px #f10f0f;
+
+}
