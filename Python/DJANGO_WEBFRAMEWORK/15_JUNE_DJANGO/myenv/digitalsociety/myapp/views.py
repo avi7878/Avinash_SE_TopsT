@@ -20,7 +20,7 @@ def login(request):
                         }
             return render(request,"myapp/index.html",context)
         else:
-            pass
+            pass 
     elif request.POST:
         print("Submit buttom hit")
         p_email = request.POST['email']
