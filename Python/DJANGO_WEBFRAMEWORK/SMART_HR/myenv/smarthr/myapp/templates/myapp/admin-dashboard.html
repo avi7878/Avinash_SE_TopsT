@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% load static %}
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none">
 
 <!-- Mirrored from smarthr.dreamguystech.com/html/template/admin-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 13 Aug 2023 10:21:33 GMT -->
@@ -12,17 +12,17 @@
 
 <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
 
-<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static 'myapp/assets/css/bootstrap.min.css' %}">
 
-<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
-<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="{% static 'myapp/assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'myapp/assets/plugins/fontawesome/css/all.min.css' %}">
 
-<link rel="stylesheet" href="assets/css/line-awesome.min.css">
-<link rel="stylesheet" href="assets/css/material.css">
+<link rel="stylesheet" href="{% static 'myapp/assets/css/line-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'myapp/assets/css/material.css' %}">
 
-<link rel="stylesheet" href="assets/plugins/morris/morris.css">
+<link rel="stylesheet" href="{% static 'myapp/assets/plugins/morris/morris.css' %}">
 
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="{% static 'myapp/assets/css/style.css' %}">
 </head>
 <body>
 
@@ -287,7 +287,7 @@
 <div class="dropdown-menu">
 <a class="dropdown-item" href="profile.html">My Profile</a>
 <a class="dropdown-item" href="settings.html">Settings</a>
-<a class="dropdown-item" href="index-2.html">Logout</a>
+<a class="dropdown-item" href="login.html">Logout</a>
 </div>
 </li>
 </ul>
@@ -298,7 +298,7 @@
 <div class="dropdown-menu dropdown-menu-right">
 <a class="dropdown-item" href="profile.html">My Profile</a>
 <a class="dropdown-item" href="settings.html">Settings</a>
-<a class="dropdown-item" href="index-2.html">Logout</a>
+<a class="dropdown-item" href="login.html">Logout</a>
 </div>
 </div>
 
@@ -2397,21 +2397,17 @@ library_add_check
 </div>
 </div>
 
-<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.7.0.min.js"></script>
-
-<script src="assets/js/bootstrap.bundle.min.js"></script>
-
-<script src="assets/js/jquery.slimscroll.min.js"></script>
-
-<script src="assets/plugins/morris/morris.min.js"></script>
-<script src="assets/plugins/raphael/raphael.min.js"></script>
-<script src="assets/js/chart.js"></script>
-<script src="assets/js/greedynav.js"></script>
-
-<script src="assets/js/layout.js"></script>
-<script src="assets/js/theme-settings.js"></script>
-
-<script src="assets/js/app.js"></script>
+<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="{% static 'myapp/assets/js/jquery-3.7.0.min.js' %}"></script>
+<script src="{% static 'myapp/assets/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'myapp/assets/js/jquery.slimscroll.min.js' %}"></script>
+<script src="{% static 'myapp/assets/plugins/morris/morris.min.js' %}"></script>
+<script src="{% static 'myapp/assets/plugins/raphael/raphael.min.js' %}"></script>
+<script src="{% static 'myapp/assets/js/chart.js' %}"></script>
+<script src="{% static 'myapp/assets/js/greedynav.js' %}"></script>
+<script src="{% static 'myapp/assets/js/layout.js' %}"></script>
+<script src="{% static 'myapp/assets/js/theme-settings.js' %}"></script>
+<script src="{% static 'myapp/assets/js/app.js' %}"></script>
 </body>
 
 <!-- Mirrored from smarthr.dreamguystech.com/html/template/admin-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 13 Aug 2023 10:22:07 GMT -->
