@@ -25,11 +25,17 @@ class User(models.Model):
     password = models.CharField(max_length=30)
     role = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.email
+
 class Hr(models.Model):
     user_id = models.ForeignKey(User,on_delete=models.CASCADE)
     first_name  = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     contact_no = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.first_name
 
 class Employees(models.Model):
     user_id = models.ForeignKey(User,on_delete=models.CASCADE)
