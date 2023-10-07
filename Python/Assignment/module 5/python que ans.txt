@@ -1,0 +1,86 @@
+1) what is meaning of recursion ?
+-> When function calls it self is called Recursive function and this technique known as Recursion.
+
+2) what is meaning of keywwords and how many keywords are there?
+-> Keyword is reserved word which have predefind meaning.(int,float,for,print)
+-> there are 32 keyword.
+
+3) What are the constarint for variable declaration?
+-> Variable name does not contain white space.
+-> Variable name can't start with digit.
+-> Variable name can contain A-Z digit.
+-> we can't use any reserved word as a variable name.
+
+4) Difference Between For loop and While Loop.
+-> For loop is sequence control loop.
+-> While loop is a entry control loop.
+
+5) How many types of functions?
+-> There are two types of function.
+1. built-in function.
+2. user defined function.
+
+6) What is Function?
+-> Function is a block of code that we used again and again.
+
+7) why we used function?
+->  Reduce our code.
+
+8) Write the categories of Functions?
+-> function with parameters and function with return type.
+-> function with parameters and function without return type.
+-> function without parameters and function with return type.
+-> function without parameters and function without return type.
+
+9) Difference Between Parameters and return values.
+-> parameters means that value which pass at function definition time.
+-> Return value means result of function execution time. 
+
+10) What is the meaning of parameters and arguments?
+-> parameter means that value which pass at function defination time.
+-> arguments means thet value which pass at function calling time.
+
+11) Difference beetween arrays and structures?
+-> Array can contain only similar elements.
+-> Structure can contain similar and dis-similar elements.
+
+12) What is meaning of type casting?
+-> Type casting maens - to convert one data type value into another data type.
+
+13) When we use break and continue satement?
+-> Break statement stops the entire process of the loop.
+-> Continue statement only stop the current iteration of the loop.
+
+14) What are the conditional statements?
+-> They perform some condition according to the requirement of the client/user.
+1. If condition
+2. If else condition
+3. Nested if condtion
+4. Else if condition
+5. Switch Case
+
+15) Difference between conditional statement and conditional operator?
+-> Condition statement which is based on different different condition(if,if else, nested if, else if,switch)
+-> conditional operator which is divided in 3 expression.(ternary operator)
+ exp1 ? exp2 : exp3:
+exp1 is true execute exp2
+exp1 is false execute exp3 
+
+16) 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+

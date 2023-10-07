@@ -2043,6 +2043,7 @@ input[type=file].form-control {
   .header #toggle_btn .bar-icon {
     display: inline-block;
     width: 21px;
+    
   }
   .header #toggle_btn .bar-icon span {
     background-color: #ffffff;

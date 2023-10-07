@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
-
+from random import *
+from django.core.mail import send_mail
+# from django.contrib.auth.models import User
 # Create your views here.
 
 def home(request):
@@ -200,3 +202,86 @@ def edit_notice(request,pk):
                 "nid" : nid,
             }
             return render(request,"myapp/edit_notice.html",context)
+        
+# def forgot_password(request):
+#     if request.method == 'POST' :
+#         email = request.POST['email']
+#         otp = randint(1111,9999)
+
+#         try:
+#             uid = User.objects.get(email = email)
+#             uid.otp = otp
+#             uid.save()
+#             send_mail("Forgot password","Your otp is "+str(otp),"avchauhan3920@gmail.com",[email])
+#             context = {
+#                 'email' : email
+#             }
+#             return render(request,"myapp/change-password.html",{'context':context})
+#         except Exception as e:
+#             context = {
+#                 "emsg" : "Invalid email address"
+#             }
+#             return render(request,"myapp/forgot_password.html",{'context':context})
+#     else:
+#         return render(request,"myapp/forgot_password.html")
+
+def forgot_password(request):
+    print("hello")
+    if request.POST:
+        email = request.POST['email']
+        otp = randint(1111,9999)
+        print("================>>>",email)
+        try:
+            print("=====> inside  the try ")
+            uid = User.objects.get(email = email)
+            uid.otp = otp
+            uid.save()
+            
+            send_mail("Forgot password","Your otp is "+str(otp),"avchauhan3920@gmail.com",[email])
+            context = {
+                    'email' : email
+                }
+            print("=======>>>>> change password ",email)
+            print(otp)
+            print(uid)
+            return render(request,"myapp/change-password.html",context)
+        except:
+            context = {
+                "e_msg" : "Invalid email address"     
+                }   
+            return render(request,"myapp/forgot_password.html",context)
+    return render(request,"myapp/forgot_password.html")
+
+def change_password_value(request):
+    print("      Inside the save password   ")
+    if request.POST:
+        email = request.POST['email']
+        otp = request.POST['otp']
+        newpassword = request.POST['newpassword']
+        confirmpassword = request.POST['confirmpassword']
+        print("--------------->>>email",email)
+        uid = User.objects.get(email = email)
+        print("--------------->>>email",email)
+        if str(uid.otp) == otp:
+            if newpassword == confirmpassword:
+                uid.password = newpassword
+                uid.save()
+                context = {
+                    "email" : email,
+                    "smsg" : "Password successfully changed"
+                }
+                return render(request,"myapp/login.html",context)
+            else:
+                emsg = "Invalid password"
+                context = {
+                    "email" : email,
+                    "e_msg" : emsg
+                }
+                return render(request,"myapp/change-password.html",context)
+        else:
+            emsg = "Invalid Otp"
+            context = {
+                    "email" : email,
+                    "e_msg" : emsg
+            }
+            return render(request,"myapp/change-password.html",context)

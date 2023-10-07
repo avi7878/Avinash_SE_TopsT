@@ -3,7 +3,7 @@
 
 <!-- Mirrored from smarthr.dreamguystech.com/html/template/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 13 Aug 2023 10:21:02 GMT -->
 <head>
-<meta charset="utf-8">+
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Smarthr - Bootstrap Admin Template">
 <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
@@ -25,7 +25,6 @@
 <link rel="stylesheet" href="{% static 'myapp/assets/css/style.css'%}">
 <link rel="stylesheet" href="{% static 'myapp/assets/css/cosstom.css'%}">
 
-
 </head>
 <body class="account-page" style= "background: url('{% static 'myapp/assets/img/img-04.jpg'%}')  no-repeat center center/cover;" ></body>
 
@@ -39,19 +38,19 @@
 <a href="admin-dashboard.html"><img src="{% static 'myapp/assets/img/logohr.png' %}" alt="Dreamguy's Technologies" style= "width:250px"></a>
 </div>
 
-<div class="account-box" style= "background-color: transparent; width:450px; border-radius:30px" >
-<div class="account-wrapper">
-<h3 class="account-title" style= "color:white">Login</h3>
-<p class="account-subtitle" style= "color:white">Access to our dashboard</p>
-
-<form action="{% url 'login' %}">
+<form class="form" method="post" action="{% url 'login' %}">
     {% csrf_token %}
-    <div class="input-block mb-4">
-    <label class="col-form-label" style="color: DodgerBlue"  >Email Address</label>
-    {% comment %} <input class="form-control" type="text" placeholder="email" name="Email" style= "background-color: transparent; color: white"> {% endcomment %}
-    <input type="text" class="form-control" placeholder="" name="email" style= "background-color: transparent; color: white!important">
-    </div>
-    <div class="input-block mb-4">
+
+    <div class="account-box" style= "background-color: transparent; width:450px; border-radius:30px" >
+    <div class="account-wrapper">
+    <h3 class="account-title" style= "color:white">Login</h3>
+    <p class="account-subtitle" style= "color:white">Access to our dashboard</p>
+        <div class="input-block mb-4">
+        <label class="col-form-label" style="color: DodgerBlue"  >Email Address</label>
+        {% comment %} <input class="form-control" type="text" placeholder="email" name="Email" style= "background-color: transparent; color: white"> {% endcomment %}
+        <input type="text" class="form-control" placeholder="" name="email" style= "background-color: transparent; color: white!important">
+        </div>
+        <div class="input-block mb-4">
         <div class="row align-items-center">
         <div class="col">
             <label class="col-form-label" style= "color: DodgerBlue">Password</label>
@@ -63,8 +62,8 @@
         </div>
     </div>
     <div class="position-relative">
-        <input class="form-control" type="text" value="" id="password" style= "background-color: transparent; color:white">
-        {% comment %} <input type="password" placeholder="Password" class="form-control" name="password" style= "background-color: transparent; color: white"> {% endcomment %}
+        {% comment %} <input class="form-control" type="text" value="" id="password" style= "background-color: transparent; color:white"> {% endcomment %}
+        <input type="password" placeholder="Password" class="form-control" name="password" style= "background-color: transparent; color: white">
         <span class="fa-solid fa-eye-slash" id="toggle-password" style= "color:white"></span>
     </div>
     </div>
@@ -72,6 +71,11 @@
     <div class="input-block mb-4 text-center">
     <button class="btn btn-primary account-btn nitin " type="submit">Login</button>
     </div>
+    {% if e_msg %}
+    <div class="alert alert-danger" role="alert">
+        {{e_msg}}
+    </div>
+    {% endif %}
     <div class="account-footer" style= "color: white">
     <p>Don't have an account yet? <a href="register.html">Register</a></p>
     </div>

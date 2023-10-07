@@ -28,5 +28,7 @@ urlpatterns = [
     path('add-notice/',views.add_notice,name='add-notice'),
     path('view-notice/',views.view_notice,name='view-notice'),
     path('edit-notice/<int:pk>',views.edit_notice,name="edit-notice"),
+    path('forgot-password/',views.forgot_password,name='forgot-password'),
+    path('change-password-value/',views.change_password_value,name='change-password-value'),
 
 ]
