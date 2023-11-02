@@ -30,5 +30,15 @@ urlpatterns = [
     path('edit-notice/<int:pk>',views.edit_notice,name="edit-notice"),
     path('forgot-password/',views.forgot_password,name='forgot-password'),
     path('change-password-value/',views.change_password_value,name='change-password-value'),
-
+    path('register/',views.register,name='register'),
+    path('add-member/',views.add_member,name='add-member'),
+    path('all-member/',views.all_member,name='all-member'),
+    path('societyspecification-profile/<int:pk>',views.societyspecification_profile,name="societyspecification-profile"),
+    path('member-profile/',views.member_profile,name='member-profile'),
+    path('update-member-profile/',views.update_member_profile,name='update-member-profile'),
+    path('add-event/',views.add_event,name='add-event'),
+    path('view-event/',views.view_event,name='view-event'),
+    path('add-complaints/',views.add_complaints,name='add-complaints'),
+    path('view-complaints/',views.view_complaints,name='view-complaints'),
+    
 ]
