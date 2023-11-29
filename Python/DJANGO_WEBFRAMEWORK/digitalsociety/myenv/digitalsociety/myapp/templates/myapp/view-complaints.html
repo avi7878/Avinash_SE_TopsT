@@ -73,25 +73,19 @@
             {% for i in nall  %}
             <div class="card single_post">
                 <div class="body">
-                    <h3 class="m-t-0 m-b-5"><a href="detail.html">{{i.event_title}}</a></h3>
+                    {% comment %} <h3 class="m-t-0 m-b-5"><a href="detail.html">{{i.event_title}}</a></h3> {% endcomment %}
                     <ul class="meta">
-                        <li><a href="#"><i class="zmdi zmdi-account col-blue"></i>Posted By: {{cid.first_name}} {{cid.last_name}} ({{uid.role}})</a></li>
+                        {% comment %} <li><a href="#"><i class="zmdi zmdi-account col-blue"></i>Posted By: {{cid.first_name}} {{cid.last_name}} ({{uid.role}})</a></li> {% endcomment %}
                         {% comment %} <li><a href="#"><i class="zmdi zmdi-label col-amber"></i>Technology</a></li>
                         <li><a href="#"><i class="zmdi zmdi-comment-text col-blue"></i>Comments: 3</a></li> {% endcomment %}
                     </ul>
                 </div>                    
                 <div class="body">
-                    {% comment %} <div class="img-post m-b-15">
-                        <img src="..\assets\images\blog\blog-page-2.jpg" alt="Awesome Image">
-                        <div class="social_share">                            
-                            <button class="btn btn-primary btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-facebook"></i></button>
-                            <button class="btn btn-primary btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-twitter"></i></button>
-                            <button class="btn btn-primary btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-instagram"></i></button>
-                        </div>
-                    </div> {% endcomment %}
                     <p>{{i.complaints_description}}</p>
-                    <a href="{% url 'edit-notice' pk=i.id %}" title="read more" class="btn btn-round btn-info">Edit</a>                        
-                    <a href="detail.html" title="read more" class="btn btn-round btn-info">Delete</a>                        
+                    {% if uid.role == "Chairman" %}
+                        <a href="{% url 'edit-notice' pk=i.id %}" title="read more" class="btn btn-round btn-info">Edit</a>                        
+                        <a href="detail.html" title="read more" class="btn btn-round btn-info">Delete</a>                        
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}

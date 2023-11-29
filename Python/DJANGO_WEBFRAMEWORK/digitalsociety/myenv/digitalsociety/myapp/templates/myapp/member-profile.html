@@ -61,7 +61,7 @@
                         <form action="{% url 'change-password' %}" method="POST">
                             {% csrf_token %}
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Username" value="{{uid.email}}" readonly disabled>
+                                <input type="text" class="form-control" placeholder="Username" value="{{sid.email}}" readonly disabled>
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" placeholder="Current Password" name="currentpassword">
@@ -77,17 +77,17 @@
                             <div class="row clearfix">
                                 <div class="col-lg-6 col-md-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="First Name" name="firstname" value={{sid.first_name}} >
+                                        <input type="text" class="form-control" placeholder="First Name"  value="{{sid.first_name}}" name="first_name">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Last Name" name="lastname" value={{sid.last_name}} >
+                                        <input type="text" class="form-control" placeholder="Last Name" name="last_name" value={{sid.last_name}} >
                                     </div>
                                 </div>                                    
                                 <div class="col-lg-4 col-md-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Contact no" name="contactno" value={{sid.contact_no}} >
+                                        <input type="text" class="form-control" placeholder="Contact no" name="contact_no" value={{sid.contact_no}} >
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-12">
@@ -96,7 +96,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <input type="submit" class="btn btn-primary btn-round" value="Save Change">
+                                    <input type="submit" class="btn btn-primary btn-round" value="Save">
                                 </div>
                             </div>
                         </form>

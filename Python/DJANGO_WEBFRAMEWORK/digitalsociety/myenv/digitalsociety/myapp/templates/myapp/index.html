@@ -228,6 +228,7 @@
             <div class="menu">
                 <ul class="list">
                     <li>
+                        {% if uid.role == "Chairman" %}
                         <div class="user-info">
                             <div class="image"><a href="{% url 'profile' %}"><img src="{{cid.pic.url}}" alt="User"></a></div>
                             <div class="detail">
@@ -235,6 +236,15 @@
                                 <small>{{uid.role}}</small>                        
                             </div>
                         </div>
+                        {% else %}
+                        <div class="user-info">
+                            <div class="image"><a href="{% url 'profile' %}"><img src="{{sid.pic.url}}" alt="User"></a></div>
+                            <div class="detail">
+                                <h4>{{sid.first_name}} {{sid.last_name}}</h4>
+                                <small>{{uid.role}}</small>                        
+                            </div>
+                        </div>
+                        {% endif %}
                     </li>
                     <li class="header">MAIN</li>
                     
@@ -244,7 +254,9 @@
                         <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-accounts-add"></i><span>Society Members</span></a>
                         <ul class="ml-menu">
                             <li class=""><a href="{% url 'all-member' %}">All Society Members</a></li>
+                            {% if uid.role == "Chairman" %}
                             <li class=""><a href="{% url 'add-member' %}">Add Society Members</a></li>
+                            {% endif %}
                         </ul>
                     </li>
                     <li class="">
@@ -258,21 +270,23 @@
                         <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-cocktail"></i><span>Events</span></a>
                         <ul class="ml-menu">
                             <li class=""><a href="{% url 'view-event' %}">All Events</a></li>
-                            <li class=""><a href="{% url 'add-event' %}">Add Events</a></li>
+                            {% if uid.role == "Chairman" %}
+                                <li class=""><a href="{% url 'add-event' %}">Add Events</a></li>
+                            {% endif %}
                         </ul>
                     </li>
                     <li class="">
                         <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-alert-circle"></i><span>Complaints</span></a>
                         <ul class="ml-menu">
                             <li class=""><a href="{% url 'view-complaints'%}">All Complaints</a></li>
-                            <li class=""><a href="{% url 'add-complaints'%}">Add Complaints</a></li>
+                            <li class=""><a href="{% url 'add-complaints' %}">Add Complaints</a></li>
                         </ul>
                     </li>
                     <li class="">
                         <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-steam-square"></i><span>Maintenance</span></a>
                         <ul class="ml-menu">
-                            <li class=""><a href="..\doctor\doctors.html">All Maintenance</a></li>
-                            <li class=""><a href="..\doctor\add-doctor.html">Add Maintenance</a></li>
+                            <li class=""><a href="{% url 'all-maintainance' %}">All Maintenance</a></li>
+                            <li class=""><a href="{% url 'add-maintainance' %}">Add Maintenance</a></li>
                         </ul>
                     </li>
             </div>

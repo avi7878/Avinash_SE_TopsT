@@ -14,7 +14,7 @@
                             </button>
                         
                         <ul class="breadcrumb float-md-right">
-                            <li class="breadcrumb-item"><a href="..\dashboard\index.html"><i class="zmdi zmdi-home"></i> Digital Society</a></li>
+                            <li class="breadcrumb-item"><a href="..\dashboard\index.html"><i class="zmdi zmdi-home"></i>Digital Society</a></li>
                                                             <li class="breadcrumb-item">Doctors</li>
                                                                                         <li class="breadcrumb-item active">Profile</li>
                                                     </ul>
@@ -242,13 +242,13 @@
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="email" value="{{sid.email}}" disabled>
                         </div>
-                        <div class="form-group">
+                        {% comment %} <div class="form-group">
                             <input type="password" class="form-control" placeholder="Current Password" name="currentpassword">
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" placeholder="New Password" name="newpassword">
                         </div>
-                        <input type="submit"  class="btn btn-info btn-round" name="SUBMIT" value="Change Password">
+                        <input type="submit"  class="btn btn-info btn-round" name="SUBMIT" value="Change Password"> {% endcomment %}
                        
                     </form>
                         <hr>
@@ -258,12 +258,12 @@
                         <div class="row clearfix">
                             <div class="col-lg-6 col-md-12">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="First Name" name="first_name" value="{{sid.first_name}}">
+                                    <input type="text" class="form-control" placeholder="First Name" name="first_name" value="{{sid.first_name}}" disabled>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Last Name" name="last_name" value="{{sid.last_name}}">
+                                    <input type="text" class="form-control" placeholder="Last Name" name="last_name" value="{{sid.last_name}}" disabled>
                                 </div>
                             </div>                                    
                             <!-- <div class="col-lg-4 col-md-12">
@@ -283,23 +283,23 @@
                             </div> -->
                             <div class="col-lg-6 col-md-12">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Contact No" name="contact_no" value="{{sid.contact_no}}">
+                                    <input type="text" class="form-control" placeholder="Contact No" name="contact_no" value="{{sid.contact_no}}" disabled>
                                 </div>
                             </div>  
-                            <div class="col-md-6">
+                            {% comment %} <div class="col-md-6">
                                 <div class="form-group m-b-10">
                                   <input type="file" class="form-control" name="pic" />
                                 </div>
-                            </div>
-                            <div class="col-md-12">
+                            </div> {% endcomment %}
+                            {% comment %} <div class="col-md-12">
                                 <div class="form-group m-b-10">
                                     <textarea rows="4" class="form-control no-resize" name="about" placeholder="About me"></textarea>
                                 </div>
-                            </div>
+                            </div> {% endcomment %}
                             
-                            <div class="col-md-12">
+                            {% comment %} <div class="col-md-12">
                                 <input type="submit" class="btn btn-primary btn-round" name="SAVE" value="SAVE CHANGES" />
-                            </div>
+                            </div> {% endcomment %}
                         </div>
                     </form>
                     </div>                        

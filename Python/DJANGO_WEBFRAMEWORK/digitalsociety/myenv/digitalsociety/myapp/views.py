@@ -18,12 +18,17 @@ def home(request):
                         }
             return render(request,"myapp/index.html",context)
         else:
-            sid = SocietyMember.objects.get(user_id = uid)
-            context = {
+            try:
+                sid = SocietyMember.objects.get(user_id = uid)
+                context = {
                             'uid' : uid,
                             'sid' : sid,
                         }
-            return render(request,"myapp/index.html",context)
+                return render(request,"myapp/index.html",context)
+            except:
+                return HttpResponse("Page not Found")
+            
+            # return render(request,"myapp/login.html")
     else:
         return render(request,"myapp/login.html")
 
@@ -45,6 +50,15 @@ def login(request):
                             'sid' : sid,
                         }
             return render(request,"myapp/index.html",context)
+            # try:
+            #     sid = SocietyMember.objects.get(user_id = uid)
+            #     context = {
+            #                 'uid' : uid,
+            #                 'sid' : sid,
+            #             }
+            #     return render(request,"myapp/index.html",context)
+            # except:
+            #     return render(request,"myapp/login.html")
 
     elif request.POST:
         print("Submit buttom hit")
@@ -109,7 +123,13 @@ def profile(request):
                             'cid' : cid,
                         }
             return render(request,"myapp/profile.html",context)
-    
+        else:
+            sid = SocietyMember.objects.get(user_id = uid)    
+            context = {
+                'uid' : uid,
+                'sid' : sid,
+            }
+            return render(request,"myapp/member-profile.html",context)
     
 def change_password(request):
     if 'email' in request.session:
@@ -161,7 +181,24 @@ def update_chairman_profile(request):
                     'uid' : uid,
                     'cid' : cid,
                 }
-                return render(request,"myapp/profile.html",context)                
+                return render(request,"myapp/profile.html",context)  
+            # else:
+            #     sid = SocietyMember.objects.get(user_id = uid)
+
+            #     sid.first_name = request.POST['first_name']
+            #     sid.last_name = request.POST['last_name']
+            #     sid.contact_no = request.POST['contact_no']         
+
+            #     if 'pic' in request.FILES:
+            #         sid.pic = request.FILES['pic'] 
+
+            #     sid.save()    
+
+            #     context = {
+            #         'uid' : uid,
+            #         'sid' : sid,
+            #     }
+            #     return render(request,"myapp/profiles.html",context)
             
 def add_notice(request):
     if 'email' in request.session:
@@ -192,10 +229,28 @@ def add_notice(request):
             }
             return render(request,"myapp/add-notice.html",context)
         else:
+            sid = SocietyMember.objects.get(user_id = uid)
+            if request.POST:
+                nid = Notice.objects.create(notice_title = request.POST['notice_title'],notice_description = request.POST['notice_description'])
+
+                if "pic" in request.FILES and "video" in request.FILES:
+                    nid = Notice.objects.create(notice_title = request.POST['notice_title'],notice_description = request.POST['notice_description'],pic = request.FILES['pic'],video = request.FILES['video'])
+                    
+                elif "pic" in request.FILES:
+                    nid = Notice.objects.create(notice_title = request.POST['notice_title'],notice_description = request.POST['notice_description'],pic = request.FILES['pic'])
+
+                elif "video" in request.FILES:
+                    nid = Notice.objects.create(notice_title = request.POST['notice_title'],notice_description = request.POST['notice_description'],video = request.FILES['video'])
+
+                context = {
+                    "uid" : uid,
+                    "sid" : sid,
+                }
+                return render(request,"myapp/add-notice.html",context)
 
             context = {
                 "uid" : uid,
-                "cid" : cid,
+                "sid" : sid,
             }
             return render(request,"myapp/add-notice.html",context)
 
@@ -211,8 +266,17 @@ def view_notice(request):
                 "nall" : nall,
             }
             return render(request,"myapp/list.html",context)
+        else:
+            sid = SocietyMember.objects.get(user_id = uid)
+            nall = Notice.objects.all()
+            context = {
+                "uid" : uid,
+                "sid" : sid,
+                "nall" : nall,
+            }
+            return render(request,"myapp/list.html",context)
 
-def edit_notice(request,pk):
+def edit_notice(request, pk):
     if 'email' in request.session:
         uid = User.objects.get(email = request.session['email'])
         if uid.role == 'Chairman':
@@ -224,6 +288,22 @@ def edit_notice(request,pk):
                 "nid" : nid,
             }
             return render(request,"myapp/edit_notice.html",context)
+        
+def delete_notice(request,pk):
+    if "email" in request.session:
+        uid = User.objects.get(email = request.session['email'])
+        if uid.role == 'Chairman':
+            cid = Chairman.objects.get(user_id = uid)
+            nid = Notice.objects.get(id = pk)
+
+            nid.delete()
+            nall = Notice.objects.all()
+            context = {
+                "uid" : uid,
+                "cid" : cid,
+                "nall" : nall,
+            }
+            return render(request,"myapp/list.html",context)
 
 def forgot_password(request):
     print("hello")
@@ -297,9 +377,9 @@ def register(request):
         email =  request.POST['email']
         contact_no =  request.POST['contact_no']
         password =  request.POST['password']
-        # gender =  request.POST['gender']
-        # subject =  request.POST.getlist('subject')
-        # city =  request.POST['city']
+        gender =  request.POST['gender']
+        subject =  request.POST.getlist('subject')
+        city =  request.POST['city']
         if User.objects.filter(name=name).exists():
             messages.error(request, 'Username already taken.')
         else:
@@ -347,14 +427,16 @@ def add_member(request):
             date_of_birth = request.POST['date_of_birth']
             email = request.POST['email']
             blood_group = request.POST['blood_group']
-            pic = request.POST['pic']
+            pic = request.FILES['pic']
+            # if 'pic' in request.FILES:
+            #     pic = request.FILES['pic']
 
             l1 = ['as789','asf2740','sfv521','khb354','zed354']
             password = email[4:7]+contact_no[3:7]+choice(l1)
 
-            uid = User.objects.create(email = email,password = password,role = "societymember")
+            uid = User.objects.create(email = email,password = password,role = "Societymember")
             sid = SocietyMember.objects.create(user_id = uid,first_name = first_name,last_name = last_name,contact_no = contact_no,city = city,no_of_family_member = no_of_family_member,
-                                               house_no = house_no,occupation = occupation, job_address = job_address, vahical_details = vahical_details,date_of_birth = date_of_birth,email = email,blood_group = blood_group)
+                                               house_no = house_no,occupation = occupation, job_address = job_address, vahical_details = vahical_details,date_of_birth = date_of_birth,email = email,blood_group = blood_group,pic = pic)
             
             if sid:
                 send_mail("Hello ","Your Password is "+str(password),"avchauhan3920@gmail.com",[email])
@@ -378,31 +460,53 @@ def add_member(request):
 def all_member(request):
     if "email" in request.session:
         uid = User.objects.get(email = request.session['email'])
-        cid = Chairman.objects.get(user_id = uid)
-        sall = SocietyMember.objects.all()
-        context = {
-                'uid' : uid,
-                'cid' : cid,
-                'sall' : sall, 
-        }
-        print("innnnnsideee the all member  page")
-        return render(request,"myapp/all-member.html",context)
-    else:
-        print("====>>> something went wrong")
+        if uid.role == "Chairman":
+            cid = Chairman.objects.get(user_id = uid)
+            sall = SocietyMember.objects.all()
+            context = {
+                    'uid' : uid,
+                    'cid' : cid,
+                    'sall' : sall, 
+            }
+            print("insideee the all member  page")
+            return render(request,"myapp/all-member.html",context)
+        else :
+            sid = SocietyMember.objects.get(user_id = uid)
+            sall = SocietyMember.objects.all()
+            context = {
+                    'uid' : uid,
+                    'sid' : sid,
+                    'sall' : sall, 
+            }
+            print("insideee the all member  page")
+            return render(request,"myapp/all-member.html",context)           
 
 def societyspecification_profile(request,pk):
     if "email" in request.session:
         uid = User.objects.get(email = request.session['email'])
-        cid = Chairman.objects.get(user_id = uid)
-        sid = SocietyMember.objects.get(id = pk)
+        if uid.role == "Chairman" :
+            cid = Chairman.objects.get(user_id = uid)
+            sid = SocietyMember.objects.get(id = pk)
 
-        context = {
-                'uid' : uid,
-                'cid' : cid, 
-                'sid' : sid,
-                
-        }
-        return render(request,"myapp/specific_profile.html",context)
+            context = {
+                    'uid' : uid,
+                    'cid' : cid, 
+                    'sid' : sid,
+                    
+            }
+            return render(request,"myapp/specific_profile.html",context)
+        else :
+            sid = SocietyMember.objects.get(user_id = uid)
+            sid = SocietyMember.objects.get(id = pk)
+
+            context = {
+                    'uid' : uid,
+                    'sid' : sid, 
+                    'sid' : sid,
+                    
+            }
+            return render(request,"myapp/specific_profile.html",context)
+
     
 def member_profile(request):
     if 'email' in request.session:
@@ -418,7 +522,7 @@ def member_profile(request):
 def update_member_profile(request):
         if 'email' in request.session:
             uid = User.objects.get(email = request.session['email'])
-            if uid.role == 'Societymember':
+            if uid.role == 'societymember': 
                 print("Inside the block !!!!!")
                 sid = SocietyMember.objects.get(user_id = uid)   
 
@@ -435,9 +539,9 @@ def update_member_profile(request):
                     'uid' : uid,
                     'sid' : sid,
                 }
-                return render(request,"myapp/specific_profile.html",context)
+                return render(request,"myapp/member-profile.html",context)
             print("Outside the block")
-            return render(request,"myapp/specific_profile.html")
+            return render(request,"myapp/member-profile.html")
             
 def add_event(request):
     if 'email' in request.session:
@@ -478,6 +582,16 @@ def view_event(request):
                 "nall" : nall,
             }
             return render(request,"myapp/view-event.html",context)
+        else:
+            sid = SocietyMember.objects.get(user_id = uid)
+            nall = event.objects.all()
+            context = {
+                "uid" : uid,
+                "sid" : sid,
+                "nall" : nall,
+            }
+            return render(request,"myapp/view-event.html",context)
+        
 
 def add_complaints(request):
     if 'email' in request.session:
@@ -485,7 +599,7 @@ def add_complaints(request):
         if uid.role == "Chairman":
             cid = Chairman.objects.get(user_id = uid)
             if request.POST:
-                coid = complaints.objects.create(complaints_description = request.POST['complaints_description'])
+                cid = complaints.objects.create(complaints_description = request.POST['complaints_description'])
 
                 context = {
                     'uid' : uid,
@@ -500,11 +614,19 @@ def add_complaints(request):
             return render(request,"myapp/add-complaints.html",context)
             
         else:
+            sid = SocietyMember.objects.get(user_id = uid)
+            if request.POST:
+                cid = complaints.objects.create(complaints_description = request.POST['complaints_description'])
 
+                context = {
+                    'uid' : uid,
+                    'sid' : sid,
+                }
+                return render(request,"myapp/add-complaints.html",context)
             context = {
-                'uid' : uid,
-                'cid' : cid,
-            }
+                    'uid' : uid,
+                    'sid' : sid,
+                }
             return render(request,"myapp/add-complaints.html",context)
 
 def view_complaints(request):
@@ -514,8 +636,80 @@ def view_complaints(request):
             cid = Chairman.objects.get(user_id = uid)
             nall = complaints.objects.all()
             context = {
-                'uid' : uid,
+                'uid' : uid, 
                 'cid' : cid,
                 'nall' : nall,
             }
             return render(request,"myapp/view-complaints.html",context)
+        else:
+            sid = SocietyMember.objects.get(user_id = uid)
+            nall = complaints.objects.all()
+
+            context = {
+                'uid' : uid,
+                'sid' : sid,
+                'nall' : nall,
+            }
+            return render(request,"myapp/view-complaints.html",context)
+    
+def add_maintainance(request):
+    if 'email' in request.session:
+        uid = User.objects.get(email = request.session['email'])
+        if uid.role == 'Chairman':
+            cid = Chairman.objects.get(user_id = uid)
+            
+            if request.POST:
+                mid = maintainance.objects.create(title = request.POST['title'], amount = request.POST['amount'], duedate = request.POST['duedate'])
+                
+                context = {
+                    'uid' : uid,
+                    'cid' : cid,
+                }
+                return render(request,"myapp/add-maintainance.html",context)
+            context = {
+                    'uid' : uid,
+                    'cid' : cid,
+                }
+            return render(request,"myapp/add-maintainance.html",context)
+        
+        else:
+
+            sid = SocietyMember.objects.get(user_id = uid)
+
+            if request.POST:
+                mid = maintainance.objects.create(title = request.POST['title'], amount = request.POST['amount'], duedate = request.POST['duedate'])
+
+                context = {
+                    'uid' : uid,
+                    'sid' : sid,
+                }
+                return render(request,"myapp/add-maintainance.html",context)
+            context = {
+                    'uid' : uid,
+                    'sid' : sid,
+                }
+            return render(request,"myapp/add-maintainance.html",context)
+
+def all_maintainance(request):
+    if 'email' in request.session:
+          uid = User.objects.get(email = request.session['email'])
+          if uid.role == 'Chairman':
+              cid = Chairman.objects.get(user_id = uid)
+              mall = maintainance.objects.all() 
+
+              context = {
+                  'uid' : uid,
+                  'cid' : cid,
+                  'mall' : mall,
+              }
+              return render(request,"myapp/all-maintainance.html",context)
+          else:
+              sid = SocietyMember.objects.get(user_id = uid)
+              mall = maintainance.objects.all()
+
+              context = {
+                  'uid' : uid,
+                  'sid' : sid,
+                  'mall' : mall,
+              }
+              return render(request,"myapp/all-maintainance.html",context)

@@ -81,3 +81,8 @@ class event(models.Model):
 
 class complaints(models.Model):
     complaints_description = models.FileField()
+
+class maintainance(models.Model):
+    title = models.CharField(max_length=50)
+    amount = models.IntegerField(max_length=50)
+    duedate = models.TextField(max_length=50)

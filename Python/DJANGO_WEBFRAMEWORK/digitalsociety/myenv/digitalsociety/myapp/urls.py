@@ -27,7 +27,8 @@ urlpatterns = [
     path('update-chairman-profile/',views.update_chairman_profile,name='update-chairman-profile'),
     path('add-notice/',views.add_notice,name='add-notice'),
     path('view-notice/',views.view_notice,name='view-notice'),
-    path('edit-notice/<int:pk>',views.edit_notice,name="edit-notice"),
+    path('edit-notice/<int:pk>/',views.edit_notice,name="edit-notice"),
+    path('delete-notice/<int:pk>',views.delete_notice,name="delete-notice"),
     path('forgot-password/',views.forgot_password,name='forgot-password'),
     path('change-password-value/',views.change_password_value,name='change-password-value'),
     path('register/',views.register,name='register'),
@@ -40,5 +41,6 @@ urlpatterns = [
     path('view-event/',views.view_event,name='view-event'),
     path('add-complaints/',views.add_complaints,name='add-complaints'),
     path('view-complaints/',views.view_complaints,name='view-complaints'),
-    
+    path('add-maintainance/',views.add_maintainance,name='add-maintainance'),
+    path('all-maintainance/',views.all_maintainance,name='all-maintainance'),
 ]

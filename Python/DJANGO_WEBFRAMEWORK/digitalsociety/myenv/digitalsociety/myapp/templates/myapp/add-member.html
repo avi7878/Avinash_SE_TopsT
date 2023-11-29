@@ -37,7 +37,7 @@
                     </li>
                 </ul>
             </div>
-            <form action="{% url 'add-member' %}" method="POST">
+            <form action="{% url 'add-member' %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
             <div class="body">
                 <div class="row clearfix">
@@ -109,12 +109,11 @@
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
-                            <input type="file" class="form-control" name="pic">
+                            <input type="file" class="form-control" name="pic" accept="image/*">
                         </div>
                     </div>
                 </div>
                 <div class="row clearfix">
-
                     <div class="col-sm-12">
                         <input type="submit" class="btn btn-primary btn-round" value="Submit" name="Submit"/>
                         <button type="submit" class="btn btn-default btn-round btn-simple">Cancel</button>
