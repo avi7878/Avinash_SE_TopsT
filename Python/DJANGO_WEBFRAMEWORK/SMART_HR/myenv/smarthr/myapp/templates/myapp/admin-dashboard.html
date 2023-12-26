@@ -1,4 +1,6 @@
 {% load static %}
+
+
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none">
 
 <!-- Mirrored from smarthr.dreamguystech.com/html/template/admin-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 13 Aug 2023 10:21:33 GMT -->
@@ -321,7 +323,7 @@
 <li class="submenu">
 <a href="#"><i class="la la-dashboard"></i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
 <ul>
-<li><a href="admin-dashboard.html">Admin Dashboard</a></li>
+<li><a href="admin-dashboard.html">Admin Profile</a></li>
 <li><a href="employee-dashboard.html">Employee Dashboard</a></li>
 </ul>
 </li>
@@ -350,7 +352,7 @@
 <li class="submenu">
 <a href="#" class="noti-dot"><i class="la la-user"></i> <span> Employees</span> <span class="menu-arrow"></span></a>
 <ul>
-<li><a href="employees.html">All Employees</a></li>
+<li><a href="{% url 'add-member' %}">All Employees</a></li>
 <li><a href="holidays.html">Holidays</a></li>
 <li><a href="leaves.html">Leaves (Admin) <span class="badge rounded-pill bg-primary float-end">1</span></a></li>
 <li><a href="leaves-employee.html">Leaves (Employee)</a></li>
@@ -606,7 +608,7 @@
 <li class="submenu">
 <a href="#"><i class="la la-dashboard"></i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
 <ul>
-<li><a class="active" href="admin-dashboard.html">Admin Dashboard</a></li>
+<li><a class="active" href="{% url 'profile' %}">Admin Profile</a></li>
 <li><a href="employee-dashboard.html">Employee Dashboard</a></li>
 </ul>
 </li>
@@ -635,7 +637,7 @@
 <li class="submenu">
 <a href="#" class="noti-dot"><i class="la la-user"></i> <span> Employees</span> <span class="menu-arrow"></span></a>
 <ul>
-<li><a href="employees.html">All Employees</a></li>
+<li><a href="{% url 'add-member' %}">All Employees</a></li>
 <li><a href="holidays.html">Holidays</a></li>
 <li><a href="leaves.html">Leaves (Admin) <span class="badge rounded-pill bg-primary float-end">1</span></a></li>
 <li><a href="leaves-employee.html">Leaves (Employee)</a></li>

@@ -1,5 +1,5 @@
 """
-URL configuration for smarthr project.
+URL configuration for police project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -16,13 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .import views
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('login/',views.login,name='login'),
-    path('logout/',views.logout,name='logout'),
-    path('profile/',views.profile,name='profile'),
-    path('update-hr-profile/',views.update_hr_profile,name='update-hr-profile'),
-    path('add-member/',views.add_member,name='add-member'),
+    path('admin/', admin.site.urls),
 ]

@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
+from random import *
+from django.core.mail import send_mail
+from django.contrib import messages
 
 
  
@@ -131,5 +134,82 @@ def update_hr_profile(request):
                 "cid" : cid                            
             }
             return render(request,'myapp/profile.html',context)
+        
+
+def add_member(request):
+    if 'email' in request.session:
+        uid = User.objects.get(email = request.session['email'])
+        hid = Hr.objects.get(user_id = uid)
+        print("Out")
+
+        if request.POST:
+            first_name = request.POST['first_name']
+            last_name = request.POST['']
+            contact_no = request.POST['contact_no']
+            address = request.POST['address']
+            email = request.POST['email']
+            birth_date = request.POST['birth_date']
+            special_interests = request.POST['special_interests']
+            education = request.POST['education']
+            pic = request.POST['pic']
+            department = request.POST['department']
+            gender = request.POST['gender']
+            age = request.POST['age']
+            date_of_join = request.POST['date_of_join']
+            nationality = request.POST['nationality']
+            religion = request.POST['religion']
+            marital_status = request.POST['marital_status']
+            no_of_children = request.POST['no_of_children']
+            emergency_contact_name = request.POST['emergency_contact_name']
+            relationship = request.POST['relationship']
+            emergency_contact_no = request.POST['emergency_contact_no']
+            bank_name = request.POST['bank_name']
+            bank_account_no = request.POST['bank_account_no']
+            state = request.POST['state']
+            country = request.POST['country']
+            pin_code = request.FILES['pin_code']
+            family_member_name = request.POST['family_member_name']
+            family_member_relationship = request.POST['family_member_relationship']
+            family_member_birth_date = request.POST['family_member_birth_date']
+            family_member_phone_no = request.POST['family_member_phone_no']
+            institut_name = request.POST['institut_name']
+            subject = request.POST['subject']
+            institut_start_date = request.POST['institut_start_date']
+            institut_complate_date = request.POST['institut_complate_date']
+            institut_degree_name = request.POST['institut_degree_name']
+            institut_degree_grade = request.POST['institut_degree_grade']
+            
+            password_list = ['ac7889','avi92884','aa456','ddy65','asdf54']
+            password = email[3:7]+contact_no[5:8]+choice(password_list)
+
+            uid = User.objects.create(email = email, password = password, role = 'Employees')
+            eid = Employees.objects.create(user_id = uid,first_name = first_name, last_name = last_name, contact_no = contact_no, address = address, email = email, birth_date = birth_date, 
+                                           special_interests = special_interests, education = education, pic = pic, department = department, gender = gender, age = age, date_of_join = date_of_join,
+                                            nationality = nationality, religion = religion, marital_status = marital_status, no_of_children = no_of_children, emergency_contact_name = emergency_contact_name,
+                                            relationship = relationship, emergency_contact_no = emergency_contact_no, bank_name = bank_name,
+                                            bank_account_no = bank_account_no, state = state, country = country, pin_code = pin_code, family_member_name = family_member_name, family_member_relationship = family_member_relationship,
+                                            family_member_birth_date = family_member_birth_date, family_member_phone_no = family_member_phone_no,institut_name = institut_name,subject = subject, institut_start_date = institut_start_date, institut_complate_date = institut_complate_date,
+                                            institut_degree_name = institut_degree_name, institut_degree_grade = institut_degree_grade)
 
 
+            if eid:
+                print("In  111111111")
+                send_mail("Hello ","Your Password is "+str(password),"avchauhan3920@gmail.com",[email])
+                
+                msg = "Employees Add Successfully !!!!!"
+                context = {
+                    'msg' : msg,
+                    'uid' : uid,
+                    'hid' : hid,
+                }
+                return render(request,'myapp/add-member.html',context)
+            
+        else:
+            context = {
+                'uid' : uid,
+                'hid' : hid,
+            }
+            return render(request,'myapp/add-member.html',context)
+        
+    else:
+        return redirect('login')
