@@ -1,0 +1,27 @@
+<!-- edit.html -->
+<html>
+<head>
+</head>
+<body>
+    <div class="container">
+        <form method="post" action="{% url 'edit' User.id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label>Name: </label>
+            <input type="text" name="name" value="{{ User.name }}"><br>
+            <label>Email: </label>
+            <input type="text" name="email" value="{{ User.email }}"><br>
+            <label>Password: </label>
+            <input type="text" name="password" value="{{ User.password }}"><br>
+            <label>City: </label>
+            <input type="text" name="city" value="{{ User.city }}"><br>
+            <label>Salary: </label>
+            <input type="text" name="salary" value="{{ User.salary }}"><br>
+            <label>Photo: </label>
+            <input type="file" id="photo" name="photo"><br>
+            <button type="submit">Submit</button>
+            <a href="{% url 'view' %}" class="btn btn-primary">View all data</a>
+        </form>
+    </div>
+</body>
+</html>
+    

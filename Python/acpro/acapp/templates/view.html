@@ -1,0 +1,40 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <h2>View all Data</h2>
+        <div class="container">
+            {% comment %} <form method="POST" action="{% url 'view' %}"> {% endcomment %}
+                <table border="1">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>City</th>
+                        <th>Salary</th>
+                        <th>Photo</th>
+                        <th>Delete</th>
+                        <th>Update</th>
+                    </tr> 
+                    {% for u in User %}
+                    <tr>
+                        <td>{{u.id}}</td>
+                        <td>{{u.name}}</td>
+                        <td>{{u.email}}</td>
+                        <td>{{u.password}}</td>
+                        <td>{{u.city}}</td>
+                        <td>{{u.salary}}</td>
+                        {% comment %} <td><img src="{{ u.photo.url }}" alt="User Photo"></td> {% endcomment %}
+                        <td>
+                            <img src="{{ u.photo.url }}" alt="User Photo" style="max-width: 100px; max-height: 100px;">
+                        </td>
+                        <td><a href="/delete/{{u.id}}" class="btn btn-primary btn-sm">Delete</a></td>
+                        <td><a href="/edit/{{u.id}}" class="btn btn-primary btn-sm">Update</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <a href="{% url 'add' %}" class="btn btn-primary">Back</a>
+            {% comment %} </form> {% endcomment %}
+    </body>
+    </html>

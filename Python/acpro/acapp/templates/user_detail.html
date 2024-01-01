@@ -1,0 +1,18 @@
+<!-- templates/user_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Detail</title>
+</head>
+<body>
+    <h2>User Detail</h2>
+    <p>ID: {{ User.id }}</p>
+    <p>Name: {{ User.name }}</p>
+    <p>Photo: <img src="{{ User.photo.url }}" alt="Photo Not Found" style="max-width: 100px; max-height: 100px" ></p>
+    <p>Email: {{ User.email }}</p>
+    <!-- Add other fields as needed -->
+    <p><a href="{% url 'search' %}">Back to Search</a></p>
+</body>
+</html>
