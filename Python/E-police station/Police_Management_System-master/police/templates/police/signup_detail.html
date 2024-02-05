@@ -1,0 +1,71 @@
+{% extends "police/partials/layout.html" %}
+{% block content %}
+<div style="margin-left:15px;">
+<h1>Detail Signup</h1>
+<div class="ui ab segment" style="max-width:400px;width:95%">
+<h3>Please tell us about yourself</h3>
+<form method="POST" class="ui form post-form">
+{% csrf_token %}
+	<select name="police">
+    	<option value="police">Policeman</option>
+	    <option value="civilian">Civilian</option>
+	</select>
+
+	<div class="field">
+	    <label>Phone number</label>
+	    <div class="ui input">
+	        <input type="text" name="phone_no" placeholder="Your phone number">
+	    </div>
+	</div>
+	<div class="field">
+	    <label>Age</label>
+	    <div class="ui input">
+	        <input type="number" name="age" placeholder="Your age">
+	    </div>
+	</div>
+<!-- <p><label for="id_phone_no">Phone no:</label><div class="ui input"><input id="id_phone_no" name="phone_no" type="text" /></div></p> -->
+<!-- <p><label for="id_age">Age:</label><div class="ui input"><input id="id_age" name="age" type="number" /></div></p> -->
+<select name="gender" id="gender">
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+    <option value="Other">Other</option>
+    </select>
+  <button class="ui ab button teal" style="margin-top:10px;" type="submit">Submit</button>
+  <div class="ui error message"></div>
+</form> 
+<div>
+{{error}}
+</div>
+</div>
+{% endblock %}
+
+{% block js_footer %}
+<script type="text/javascript">
+	$(document).ready(function(){
+	    $('.ui.form')
+	      .form({
+	        fields: {
+	          phone_no:{
+	            identifier:'phone_no',
+	            rules:[
+	            {
+	              type:'exactLength[10]',
+	              prompt:'Please enter a valid phone number'
+	            }
+	            ]
+	          },
+	          age:{
+	            identifier:'age',
+	            rules:[
+	            {
+	                type:'empty',
+	                prompt:'Please tell us your age'
+	            }
+	            ]
+	          }
+	        }
+	      });
+
+	});
+</script>
+{% endblock %}
