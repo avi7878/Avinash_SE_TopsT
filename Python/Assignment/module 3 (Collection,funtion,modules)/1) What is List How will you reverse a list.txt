@@ -1,5 +1,6 @@
  What is List? How will you reverse a list? 
 ==> List is collaction data type.
+
 ==> which is a store duplicat value also.
 ==> we can change it value at runtime. we can perfomed append,insert and remove opretion.
 ==> which is cotain similar and dis-similar data elements.
