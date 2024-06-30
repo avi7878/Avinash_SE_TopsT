@@ -1,0 +1,90 @@
+Route::get('/blogs', [BlogController::class, 'index']);
+Route::get('/blogs/load-more', [BlogController::class, 'loadMore']);
+
+use App\Models\Blog;
+use Illuminate\Http\Request;
+
+class BlogController extends Controller
+{
+    public function index()
+    {
+        $blogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
+        return view('blogs.index', compact('blogs'));
+    }
+
+    public function loadMore(Request $request)
+    {
+        $offset = $request->input('offset');
+        $blogs = Blog::orderBy('created_at', 'desc')->skip($offset)->take(10)->get();
+        return response()->json($blogs);
+    }
+}
+
+
+@extends('layouts.app')
+
+@section('content')
+<div class="row row-cols-1 row-cols-md-2 g-4 mb-5" id="blogContainer">
+    @foreach($blogs as $list)
+        <div class="col blog-item">
+            <div class="card h-100">
+                <a href="blog/{{ $list->slug }}"><img class="card-img-top" src="{{$general->getFileUrl($list->image, 'blog') }}" alt="Card image cap"></a>
+                <div class="card-body">
+                    <a href="blog/{{ $list->slug }}"><h5 class="card-title">{{ $list->title }}</h5></a>
+                    <p class="card-text">
+                       <?php $shortDesc = Str::limit(strip_tags($list->description), 200); ?>
+                        {{ $shortDesc }}
+                        @if(strlen(strip_tags($list->description)) > 200)
+                            <a href="blog/{{ $list->slug }}" class="item">Read More</a>
+                        @endif
+                    </p>
+                    <div class="date-r">
+                        <a href="javascript:void(0);">{{  date('d M-y',$list->created_at) }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+</div>
+
+<button id="loadMoreBtn" class="btn btn-primary">Show More</button>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var offset = 3;
+        $('#loadMoreBtn').click(function(){
+            $.ajax({
+                url: '/blogs/load-more',
+                type: 'GET',
+                data: { offset: offset },
+                success: function(response) {
+                    offset += 10;
+                    response.forEach(function(blog) {
+                        var shortDesc = blog.description.substring(0, 200);
+                        var moreLink = blog.description.length > 200 ? '<a href="blog/' + blog.slug + '" class="item">Read More</a>' : '';
+                        var blogItem = `
+                            <div class="col blog-item">
+                                <div class="card h-100">
+                                    <a href="blog/${blog.slug}"><img class="card-img-top" src="/path/to/images/${blog.image}" alt="Card image cap"></a>
+                                    <div class="card-body">
+                                        <a href="blog/${blog.slug}"><h5 class="card-title">${blog.title}</h5></a>
+                                        <p class="card-text">
+                                            ${shortDesc}
+                                            ${moreLink}
+                                        </p>
+                                        <div class="date-r">
+                                            <a href="javascript:void(0);">${new Date(blog.created_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: '2-digit' })}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        $('#blogContainer').append(blogItem);
+                    });
+                }
+            });
+        });
+    });
+</script>
+@endsection
